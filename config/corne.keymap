@@ -11,6 +11,9 @@
 &caps_word {
     continue-list = <UNDERSCORE MINUS DOT>;
 };
+&led_strip {
+    chain-length = <21>;
+};
 
 / {
         behaviors {
