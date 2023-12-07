@@ -18,7 +18,7 @@
 
 / {
         behaviors {
-            cpsrs: caps_rise {
+            capsrise: caps_rise {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
@@ -40,10 +40,16 @@
                 mods = <(MOD_LALT|MOD_LSFT|MOD_RALT|MOD_RSFT)>;
                 keep-mods = <(MOD_LSFT|MOD_RSFT)>;
             };
-            altm: alt_mod {
+            slashes: fslh_bslh {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp>, <&kp>;
+                bindings = <&kp FSLH>, <&kp BSLH>;
+                mods = <(MOD_LALT|MOD_RALT)>;
+            };
+            backdel: backspace_delete {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp BSPC>, <&kp DEL>;
                 mods = <(MOD_LALT|MOD_RALT)>;
             };
             hm: balanced_homerow_mods {
@@ -66,10 +72,10 @@
 //                               |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,   |  .  |  /  |
 //                                           | ESC | TAB | SPC |   | ENT | CAPS | BSPC |
                         bindings = <
-   &none &kp Q       &kp W       &kp E      &kp R      &kp T       &kp Y   &kp U      &kp I      &kp O       &kp P           &none
-   &none &hm LSHFT A &hm LCTRL S &hm LWIN D &hm LALT F &kp G       &kp H   &hm RALT J &hm RWIN K &hm RCTRL L &hm RSHFT SEMI  &none
-   &none &kp Z       &kp X       &kp C      &kp V      &kp B       &kp N   &kp M      &kp COMMA  &kp DOT     &altm FSLH BSLH &none
-                                 &gresc     &lt 1 TAB  &kp SPACE   &kp RET &cpsrs     &altm BSPC DEL
+   &none &kp Q       &kp W       &kp E      &kp R      &kp T       &kp Y   &kp U      &kp I      &kp O       &kp P          &none
+   &none &hm LSHFT A &hm LCTRL S &hm LWIN D &hm LALT F &kp G       &kp H   &hm RALT J &hm RWIN K &hm RCTRL L &hm RSHFT SEMI &none
+   &none &kp Z       &kp X       &kp C      &kp V      &kp B       &kp N   &kp M      &kp COMMA  &kp DOT     &slashes       &none
+                                 &gresc     &lt 1 TAB  &kp SPACE   &kp RET &capsrise  &backdel
                         >;
                 };
                 lower_layer {
