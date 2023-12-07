@@ -23,13 +23,13 @@
                 #binding-cells = <2>;
                 flavor = "hold-preferred";
                 tapping-term-ms = <200>;
-                bindings = <&mo 2>, <&caps_word>;
+                bindings = <&mo>, <&caps_word>;
             };
             caps_rise: tap_dance_0 {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
-                bindings = <&lyr_caps>, <&kp CAPS>;
+                bindings = <&lyr_caps 2 0>, <&kp CAPS>;
             };
             minuscr: minus_underscore {
                 compatible = "zmk,behavior-tap-dance";
