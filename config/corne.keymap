@@ -11,9 +11,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/ext_power.h>
 
-&caps_word {
-    continue-list = <UNDERSCORE MINUS DOT BSPC>;
-};
 &led_strip {
     chain-length = <27>;
 };
@@ -32,20 +29,22 @@
                 tapping-term-ms = <200>;
                 bindings = <&kp DQT>, <&kp SQT>;
             };
-            gresc: grave_escape {
-                mods = <(MOD_LALT|MOD_LSFT|MOD_RALT|MOD_RSFT)>;
-                keep-mods = <(MOD_LSFT|MOD_RSFT)>;
-            };
             slashes: fslh_bslh {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
                 bindings = <&kp FSLH>, <&kp BSLH>;
                 mods = <(MOD_LALT|MOD_RALT)>;
             };
-            backdel: backspace_delete {
+            esq: q_escape {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp BSPC>, <&kp DEL>;
+                bindings = <&kp Q>, <&kp ESC>;
+                mods = <(MOD_LALT|MOD_RALT)>;
+            };
+            backp: p_backspace {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp P>, <&kp BSPC>;
                 mods = <(MOD_LALT|MOD_RALT)>;
             };
             hm: balanced_homerow_mods {
@@ -66,12 +65,12 @@
 //                               |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I   |  O  |  P  |
 //                               |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K   |  L  |  ;  |
 //                               |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,   |  .  |  /  |
-//                                           | ESC | TAB | SPC |   | ENT | CAPS | BSPC |
+//                                                 | TAB | SPC |   | ENT | CAPS |
                         bindings = <
-   &none &kp Q       &kp W       &kp E      &kp R      &kp T       &kp Y   &kp U      &kp I      &kp O       &kp P          &none
+   &none &esq        &kp W       &kp E      &kp R      &kp T       &kp Y   &kp U      &kp I      &kp O       &backp         &none
    &none &hm LSHFT A &hm LCTRL S &hm LWIN D &hm LALT F &kp G       &kp H   &hm RALT J &hm RWIN K &hm RCTRL L &hm RSHFT SEMI &none
    &none &kp Z       &kp X       &kp C      &kp V      &kp B       &kp N   &kp M      &kp COMMA  &kp DOT     &slashes       &none
-                                 &gresc     &lt 1 TAB  &kp SPACE   &kp RET &lt 2 CAPS &backdel
+                                 &none      &lt 1 TAB  &kp SPACE   &kp RET &lt 2 CAPS &none
                         >;
                 };
                 lower_layer {
@@ -91,14 +90,14 @@
                 raise_layer {
 // -----------------------------------------------------------------------------------------
 //                |   !  |   @  |   #  |   $  |   %  |   |   ^  |   &  |   *  |   (   |   )   |
-//                |   {  |   [  |   ]  |   }  |      |   | LEFT | DOWN |  UP  | RIGHT |   "   |
+//                |   {  |   [  |   ]  |   }  |   `  |   | LEFT | DOWN |  UP  | RIGHT |   "   |
 //                |  F1  |  F2  |  F3  |  F4  |  F5  |   |  F6  |  F7  |  F8  |   F9  |  F10  |
-//                              |  F11 |  F12 |      |   |      |      |      |
+//                              |      |  F11 |  F12 |   |      |      |      |
                         bindings = <
    &none &kp EXCL &kp AT   &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS &kp STAR &kp LPAR  &kp RPAR &none
-   &none &kp LBRC &kp LBKT &kp RBKT &kp RBRC &none       &kp LEFT  &kp DOWN &kp UP   &kp RIGHT &quotes  &none
+   &none &kp LBRC &kp LBKT &kp RBKT &kp RBRC &GRAVE      &kp LEFT  &kp DOWN &kp UP   &kp RIGHT &quotes  &none
    &none &kp F1   &kp F2   &kp F3   &kp F4   &kp F5      &kp F6    &kp F7   &kp F8   &kp F9    &kp F10  &none
-                           &kp F11  &kp F12  &none       &none     &none    &none
+                           &none    &kp F11  &kp F12     &none     &none    &none
                         >;
                 };
         };
