@@ -11,7 +11,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/ext_power.h>
 
-#define glow rgb_ug RGB
 #define blue bt BT_SEL
 
 &led_strip {
@@ -85,20 +84,20 @@
                         >;
                 };
                 lower_layer {
-//                            ╭─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────╮
-//                            │ HUI │ SAI │ BRI │ SPI │ EFF │   │     │  F1 │  F2 │  F3 │  F4 │
-//                            ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-//                            │ HUD │ SAD │ BRD │ SPD │ RGB │   │     │  F5 │  F6 │  F7 │  F8 │
-//                            ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-//                            │ BT1 │ BT2 │ BT3 │ BT4 │ OUT │   │     │  F9 │ F10 │ F11 │ F12 │
-//                            ╰─────┴─────┴─────┼─────┼─────┤   ├─────┼─────┼─────┴─────┴─────╯ 
-//                                              │ BTC │     │   │     │     │
-//                                              ╰─────┴─────╯   ╰─────┴─────╯
+//                                                       ╭─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────╮
+//                                                       │ HUI │ SAI │ BRI │ SPI │ EFF │   │     │  F1 │  F2 │  F3 │  F4 │
+//                                                       ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
+//                                                       │ HUD │ SAD │ BRD │ SPD │ RGB │   │     │  F5 │  F6 │  F7 │  F8 │
+//                                                       ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
+//                                                       │ BT1 │ BT2 │ BT3 │ BT4 │ OUT │   │     │  F9 │ F10 │ F11 │ F12 │
+//                                                       ╰─────┴─────┴─────┼─────┼─────┤   ├─────┼─────┼─────┴─────┴─────╯ 
+//                                                                         │ BTC │     │   │     │     │
+//                                                                         ╰─────┴─────╯   ╰─────┴─────╯
                            bindings = <
-   &none &glow_HUI &glow_SAI &glow_BRI &glow_SPI  &glow_EFF      &none &kp F1 &kp F2  &kp F3  &kp F4  &none
-   &none &glow_HUD &glow_SAD &glow_BRD &glow_SPD  &glow_TOG      &none &kp F5 &kp F6  &kp F7  &kp F8  &none
-   &none &blue 0   &blue 1   &blue 2   &blue 3    &out OUT_TOG   &none &kp F9 &kp F10 &kp F11 &kp F12 &none
-                             &none     &bt BT_CLR &none          &none &none  &none
+   &none &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_SPI &rgb_ug RGB_EFF   &none &kp F1 &kp F2  &kp F3  &kp F4  &none
+   &none &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &rgb_ug RGB_SPD &rgb_ug RGB_TOG   &none &kp F5 &kp F6  &kp F7  &kp F8  &none
+   &none &blue 0         &blue 1         &blue 2         &blue 3         &out OUT_TOG      &none &kp F9 &kp F10 &kp F11 &kp F12 &none
+                                         &none           &bt BT_CLR      &none             &none &none  &none
                         >;
                 };
 
