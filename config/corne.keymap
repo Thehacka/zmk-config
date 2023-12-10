@@ -20,7 +20,7 @@
 };
 
 / {
-        behaviors
+        behaviors {
             lbrckts: left_brackets {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
